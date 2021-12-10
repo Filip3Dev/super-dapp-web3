@@ -1,21 +1,6 @@
 # Super DAPP
 
-## Build Setup
-
-```bash
-# install dependencies
-$ npm install
-
-# serve with hot reload at localhost:3000
-$ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
-```
+## De uma paixão que eu tenho, que é a blockchain e seus contratos inteligentes(smart contracts). 
 
 Esse projeto é um exemplo básico de contrato inteligente que faz um registro de texto na blockchain.
 
