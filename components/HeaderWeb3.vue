@@ -6,6 +6,15 @@
       </h2>
       <v-spacer></v-spacer>
       <div>
+        <v-btn color="cyan" to="/raffle" class="mr-2">
+          Blockchain Rifa
+        </v-btn>
+        <v-btn color="cyan" to="/" class="mr-2">
+          Blockchain Registro
+        </v-btn>
+        <v-btn color="cyan" to="/nft" class="mr-2">
+          Blockchain NFT
+        </v-btn>
         <v-btn rounded color="teal" v-if="!web3.wallet" @click="syncAccount">
           Conectar carteira
         </v-btn>
@@ -19,7 +28,7 @@
 <script>
 import Web3 from 'web3';
 import { mapState, mapMutations } from 'vuex';
-import RaffleContract from '@/contracts/raffle.js';
+import SaverContract from '@/contracts/saver.js';
 export default {
   methods: {
     ...mapMutations([
@@ -57,8 +66,8 @@ export default {
             this.changeNetwork();
             return 0;
           }
-          await RaffleContract.setProvider(web3.currentProvider);
-          let { abi, address } = await RaffleContract.deployed();
+          await SaverContract.setProvider(web3.currentProvider);
+          let { abi, address } = await SaverContract.deployed();
           let payload = {
             wallet: accounts[0],
             balance,

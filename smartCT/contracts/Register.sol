@@ -6,19 +6,12 @@ contract Register {
   string public text;
   uint256 public dateChange;
 
-  modifier restricted() {
-    require(
-      msg.sender == owner,
-      "This function is restricted to the contract's owner"
-    );
-    _;
-  }
   constructor() {
     dateChange = block.timestamp;
     text = "";
   }
 
-  function setText(string memory _text) public restricted {
+  function setText(string memory _text) public {
     text = _text;
     dateChange = block.timestamp;
   }

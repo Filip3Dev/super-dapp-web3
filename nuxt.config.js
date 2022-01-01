@@ -58,7 +58,7 @@ export default {
     baseURL: process.env.API_BASE_URL
   },
   server: {
-    host: '0.0.0.0', // default: localhost
+    // host: '0.0.0.0', // default: localhost
     port: 3010
   },
 

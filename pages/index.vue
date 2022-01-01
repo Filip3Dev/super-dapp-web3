@@ -9,6 +9,11 @@
                 <h1>
                   Para iniciar você deve conectar sua carteira.
                 </h1>
+                <br>
+                <h2>
+                  Essa plataforma roda na rede de teste da <b>Binace Smart Chain</b>
+                </h2>
+                <br>
                 <h3>
                   Você precisa ter a extensão
                   <a href="https://metamask.io/" target="_blank" rel="noopener noreferrer">
@@ -20,6 +25,9 @@
             </div>
             <div v-else>
               <div>
+                <h1>
+                  Blockchain Registros
+                </h1>
                 <div>
                   <div>Ultima atualização</div>{{textChanger}}
                 </div>
@@ -50,7 +58,7 @@
 </template>
 <script>
 import Web3 from 'web3';
-import RaffleContract from '@/contracts/raffle.js'
+import SaverContract from '@/contracts/saver.js'
 import { mapState } from 'vuex';
 export default {
   name: 'newhome',
@@ -78,8 +86,8 @@ export default {
         this.loadButton = true;
         try {
           const web3 = new Web3(window.web3.currentProvider);
-          await RaffleContract.setProvider(web3.currentProvider);
-          let data = await RaffleContract.deployed();
+          await SaverContract.setProvider(web3.currentProvider);
+          let data = await SaverContract.deployed();
           const contract = await new web3.eth.Contract(data.abi, data.address);
           const accounts = await window.ethereum.request({ method: 'eth_accounts' });
           await contract.methods.setText(this.text).send({ from: accounts[0] });
@@ -97,8 +105,8 @@ export default {
       this.text = '';
       try {
         const web3 = new Web3(window.web3.currentProvider);
-        await RaffleContract.setProvider(web3.currentProvider);
-        let data = await RaffleContract.deployed();
+        await SaverContract.setProvider(web3.currentProvider);
+        let data = await SaverContract.deployed();
         const contract = await new web3.eth.Contract(data.abi, data.address);
         const contract_txt = await contract.methods.text().call();
         const contract_date = await contract.methods.dateChange().call();

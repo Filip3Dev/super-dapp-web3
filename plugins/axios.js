@@ -1,6 +1,7 @@
 export default function ({ $axios, error: nuxtError, redirect }, inject) {
     const api = $axios.create({
-        baseURL: 'https://google.com',
+        baseURL: 'https://dapp-api.netlify.app/.netlify/functions',
+        // baseURL: 'http://localhost:8888/.netlify/functions',
         timeout: 50000
     });
 
@@ -9,10 +10,11 @@ export default function ({ $axios, error: nuxtError, redirect }, inject) {
     });
 
     $axios.onError(error => {
-        const code = parseInt(error.response && error.response.status)
-        if (code === 400) { redirect('/') }
-        nuxtError({ statusCode: error.response.status, message: error.message });
-        return Promise.resolve(false);
+        console.log('$axios.onError: ', error);
+    });
+
+    $axios.onRequestError(error => {
+        console.log('$axios.onRequestError: ', error);
     });
 
     inject('api', api);
